@@ -6,6 +6,7 @@ The server listen on specific port and via url send answers.
 
 Communication with the server is possible with web browser and tools like wget, curl.
 
+
 ---
 ## Getting started
 
@@ -16,7 +17,7 @@ The server is executable with argument indicating port number.
 
 The server is possible to shut down by 'CTRL + C'.
 
----
+
 ## Supported requests
 **It's able to process 3 types of requests:**
 1. Obtain domain name - the network name of computer, including the domain
