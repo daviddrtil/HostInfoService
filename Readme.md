@@ -23,7 +23,6 @@ The server is possible to shut down by 'CTRL + C'.
 > 2. Obtain full cpu name
 > 3. Obtain current cpu load / cpu usage
 
----
 ## Usage
 
 hinfosvc [PORT NUMBER]
