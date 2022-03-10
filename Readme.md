@@ -19,9 +19,9 @@ The server is possible to shut down by 'CTRL + C'.
 ---
 ## Supported requests
 **It's able to process 3 types of requests:**
-> 1. Obtain domain name - the network name of computer, including the domain
-> 2. Obtain full cpu name
-> 3. Obtain current cpu load / cpu usage
+1. Obtain domain name - the network name of computer, including the domain
+2. Obtain full cpu name
+3. Obtain current cpu load / cpu usage
 
 ## Usage
 
