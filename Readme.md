@@ -46,5 +46,5 @@ $ 3rd example
 ```
 
 
-### Author
+## Author
 David Drtil, <xdrtil03@stud.fit.vutbr.cz>
