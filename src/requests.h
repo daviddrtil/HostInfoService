@@ -1,12 +1,12 @@
 /**
- * @file    cpu_usage.h
- * @brief   Definitions and libraries for cpu_usage.c
+ * @file    requests.h
+ * @brief   Definitions and libraries for requests.c
  * @author  David Drtil <xdrtil03@stud.fit.vutbr.cz>
  * @date    2022-02-20
 */
 
-#ifndef CPU_USAGE_H
-#define CPU_USAGE_H
+#ifndef REQUESTS_H
+#define REQUESTS_H
 
 #include "hinfosvc.h"
 
@@ -31,6 +31,18 @@ typedef enum
 } cpu_item;
 
 /**
+ * @brief Obtain host name.
+ * @return Allocated string (host_name).
+*/
+char *get_host_name();
+
+/**
+ * @brief Obtain cpu name.
+ * @return Allocated string (cpu_name).
+*/
+char *get_cpu_name();
+
+/**
  * @brief Extract cpu informations from /proc/stat.
  * @param cpu_info Reference to array of cpu stats.
 */
@@ -43,3 +55,5 @@ void extract_cpu_info(uint64_t **cpu_info);
 int get_cpu_usage();
 
 #endif
+
+/** End of file requests.h **/

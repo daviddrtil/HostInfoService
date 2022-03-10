@@ -17,9 +17,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 
-#include "host_name.h"
-#include "cpu_name.h"
-#include "cpu_usage.h"
+#include "requests.h"
 
 #define MESSAGE_BUFFER_SIZE 2000
 
@@ -38,3 +36,5 @@
 void array_resize(char **array_to_resize, int new_size);
 
 #endif
+
+/** End of file hinfosvc.h **/

@@ -1,11 +1,72 @@
 /**
- * @file    cpu_usage.c
- * @brief   Server request load (cpu usage) 
+ * @file    requests.c
+ * @brief   Server request
  * @author  David Drtil <xdrtil03@stud.fit.vutbr.cz>
  * @date    2022-02-20
 */
 
-#include "cpu_usage.h"
+#include "requests.h"
+
+char *get_host_name()
+{
+    FILE *ptr_file;
+    ptr_file = popen("cat /proc/sys/kernel/hostname", "r");
+    if (ptr_file == NULL)
+    {
+        fprintf(stderr, "Peopen failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    char *host_name = (char *)malloc(ARRAY_INIT_CAP);
+    if (host_name == NULL)
+    {
+        fprintf(stderr, "Allocation of host_name string failed.\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    int idx = 0;
+    int c;
+    while (isalnum(c = fgetc(ptr_file)) || c == '-' || c == '_')    // Load valid characters
+    {
+        host_name[idx] = c;
+        idx++;
+    }
+    host_name[idx] = '\0';
+
+    pclose(ptr_file);
+    return host_name;
+}
+
+char *get_cpu_name()
+{
+    // Get full cpu name
+    FILE *command_result;
+    command_result = popen("cat /proc/cpuinfo | grep \"model name\" | cut -c 14-", "r");
+    if (command_result == NULL)
+    {
+        fprintf(stderr, "Peopen failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int c;
+    int idx = 0;
+    char *cpu_name = (char *)malloc(ARRAY_INIT_CAP);
+    if (cpu_name == NULL)
+    {
+        fprintf(stderr, "Allocation of cpu_name string failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while ((c = fgetc(command_result)) != '\n')    // Load valid characters
+    {
+        cpu_name[idx] = c;
+        idx++;
+    }
+    cpu_name[idx] = '\0';
+
+    pclose(command_result);
+    return cpu_name;
+}
 
 void extract_cpu_info(uint64_t **cpu_info)
 {
@@ -83,3 +144,5 @@ int get_cpu_usage()
     // Return result rounded to whole number
     return (int)(cpu_usage_percetage + 0.5);
 }
+
+/** End of file requests.c **/
