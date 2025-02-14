@@ -1,4 +1,4 @@
-# IPK - project 1
+# Host Info Service
 
 Creates a server, that communicates via HTTP protocol and provides information about system.
 
